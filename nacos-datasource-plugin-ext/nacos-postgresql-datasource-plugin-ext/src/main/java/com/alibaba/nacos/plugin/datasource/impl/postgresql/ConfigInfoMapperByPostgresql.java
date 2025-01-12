@@ -30,5 +30,13 @@ public class ConfigInfoMapperByPostgresql extends BaseConfigInfoMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.POSTGRESQL;
     }
-    
+
+    @Override
+    public String getFunction(String functionName) {
+        if (functionName.equals("NOW()")) {
+            return "NOW()";
+        } else {
+            return super.getFunction(functionName);
+        }
+    }
 }
